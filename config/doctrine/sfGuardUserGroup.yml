@@ -1,0 +1,17 @@
+sfGuardUserGroup:
+  tableName: sf_guard_user_group
+  columns:
+    group_id:
+      type: integer
+      size: 11
+      primary: true
+      foreignClass: sfGuardGroup
+      localName: users
+      counterpart: user_id
+    user_id:
+      type: integer
+      size: 11
+      primary: true
+      foreignClass: sfGuardUser
+      localName: users_groups
+      counterpart: group_id

@@ -1,0 +1,10 @@
+sfGuardGroup:
+  tableName: sf_guard_group
+  columns:
+    name:
+      type: string
+      size: 255
+      notnull: true
+    description:
+      type: string
+      size: 4000
