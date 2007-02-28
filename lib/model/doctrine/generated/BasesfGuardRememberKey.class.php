@@ -2,7 +2,7 @@
 /*
 This is an automatically generated class. ANY CHANGES WILL BE LOST!
 */
-class BasesfGuardRememberKey extends sfPropelCompatRecord
+class BasesfGuardRememberKey extends sfDoctrineRecord
 {
   const DATABASE_NAME = 'users';
 

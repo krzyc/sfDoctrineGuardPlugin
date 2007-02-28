@@ -2,7 +2,7 @@
 /*
 This is an automatically generated class. ANY CHANGES WILL BE LOST!
 */
-class BasesfGuardGroup extends sfPropelCompatRecord
+class BasesfGuardGroup extends sfDoctrineRecord
 {
   const DATABASE_NAME = 'users';
 
