@@ -100,7 +100,7 @@ class sfGuardUser extends BasesfGuardUser
 
     public function addGroupByName( $name )
     {
-        $group = sfGuardGroupTable::retrieveByName( $name );
+        $group = sfDoctrine::getTable('sfGuardGroup')->retrieveByName( $name );
         if ( !$group )
         {
             throw new Exception( sprintf( 'The group "%s" does not exist.', $name ) );
@@ -115,7 +115,7 @@ class sfGuardUser extends BasesfGuardUser
 
     public function addPermissionByName( $name )
     {
-        $permission = sfGuardGroupTable::retrieveByName( $name );
+        $permission = sfDoctrine::getTable('sfGuardGroup')->retrieveByName( $name );
         if ( !$permission )
         {
             throw new Exception( sprintf( 'The permission "%s" does not exist.', $name ) );
