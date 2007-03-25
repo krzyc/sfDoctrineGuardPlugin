@@ -16,10 +16,10 @@ sfGuardGroup:
 
 sfGuardGroupPermission:
   adminGroupPermission:
-    group_id:       adminGroup
-    permission_id:  adminPermission
+    sfGuardGroup:       adminGroup
+    sfGuardPermission:  adminPermission
 
 sfGuardUserGroup:
   adminUserGroup:
-    group_id:       adminGroup
-    user_id:        adminUser
+    sfGuardGroup:       adminGroup
+    sfGuardUser:        adminUser
