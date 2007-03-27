@@ -1,0 +1,135 @@
+sfGuardUser:
+  tableName: sf_guard_user
+  columns:
+    username:
+      type: string
+      size: 128
+      notnull: true
+    algorithm:
+      type: string
+      size: 128
+      default: sha1
+      notnull: true
+    salt:
+      type: string
+      size: 128
+      notnull: true
+    password:
+      type: string
+      size: 128
+      notnull: true
+    created_at:
+      type: timestamp
+      size: null
+    last_login:
+      type: timestamp
+      size: null
+    is_active:
+      type: boolean
+      size: null
+      default: true
+      notnull: true
+    is_super_admin:
+      type: boolean
+      size: null
+      default: false
+      notnull: true
+
+sfGuardUserGroup:
+  tableName: sf_guard_user_group
+  columns:
+    group_id:
+      type: integer
+      size: 11
+#      primary: true
+      foreignClass: sfGuardGroup
+      localName: users
+      counterpart: user_id
+    user_id:
+      type: integer
+      size: 11
+#      primary: true
+      foreignClass: sfGuardUser
+      localName: groups
+      counterpart: group_id
+
+sfGuardUserPermission:
+  tableName: sf_guard_user_permission
+  columns:
+    user_id:
+      type: integer
+      size: 11
+#      primary: true
+      foreignClass: sfGuardUser
+      localName: permissions
+      counterpart: permission_id
+    permission_id:
+      type: integer
+      size: 11
+#      primary: true
+      foreignClass: sfGuardPermission
+      localName: users
+      counterpart: user_id
+
+sfGuardGroup:
+  tableName: sf_guard_group
+  columns:
+    name:
+      type: string
+      size: 255
+      notnull: true
+    description:
+      type: string
+      size: 4000
+
+sfGuardGroupPermission:
+  tableName: sf_guard_group_permission
+  columns:
+    group_id:
+      type: integer
+      size: 11
+#      primary: true
+      foreignClass: sfGuardGroup
+      localName: permissions
+      counterpart: permission_id
+    permission_id:
+      type: integer
+      size: 11
+      notnull: true
+#      primary: true
+      foreignClass: sfGuardPermission
+      localName: groups
+      counterpart: group_id
+
+sfGuardPermission:
+  tableName: sf_guard_permission
+  columns:
+    name:
+      type: string
+      size: 255
+      notnull: true
+    description:
+      type: string
+      size: 4000
+
+sfGuardRememberKey:
+  tableName: sf_guard_remember_key
+  columns:
+    user_id:
+      type: integer
+      size: 11
+      primary: true
+      foreignClass: sfGuardUser
+      foreignName: user
+      localName: remember_key
+      cascadeDelete: true
+    remember_key:
+      type: string
+      size: 32
+    ip_address:
+      type: string
+      size: 15
+      primary: true
+    created_at:
+      type: timestamp
+      size: null

@@ -15,11 +15,11 @@ generator:
         username:                 { name: 'Username' }
         password:                 { name: 'Password' }
         password_bis:             { name: 'Password (again)' }
-        users_groups:             { name: 'Groups/Roles', type: doctrine_admin_double_list, params: associated_label=Assigned unassociated_label=Available }
-        users_permissions:        { name: 'Permissions', type: doctrine_admin_double_list, params: associated_label=Assigned unassociated_label=Available }
+        groups:             { name: 'Groups/Roles', type: doctrine_admin_check_list, params: associated_label=Assigned unassociated_label=Available }
+        permissions:        { name: 'Permissions', type: doctrine_admin_check_list, params: associated_label=Assigned unassociated_label=Available }
         last_login:               { name: 'Last Login', type: plain }
         is_active:                { name: 'Active?' }
       display:
         "NONE":                   [ username, _password, _password_bis ]
         "Information":            [ last_login ]
-        "Permissions and Groups": [ is_active, users_groups, users_permissions ]
+        "Permissions and Groups": [ is_active, groups, permissions ]

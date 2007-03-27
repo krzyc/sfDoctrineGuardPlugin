@@ -42,7 +42,7 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
     public function signIn( $user, $remember = false )
     {
         // signin
-        $this->setAttribute( 'user_id', $user->getId(), 'sfGuardSecurityUser' );
+        $this->setAttribute( 'user_id', $user->get('id'), 'sfGuardSecurityUser' );
         $this->setAuthenticated( true );
         $this->addCredentials( $user->getAllPermissionNames() );
 
@@ -51,7 +51,7 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
 
         // save last login
         $current_time_value = $dateFormat->format( time(), 'I' );
-        $user->setLastLogin( $current_time_value );
+        $user->set('last_login', $current_time_value );
         $user->save();
 
         // remember?
@@ -70,9 +70,9 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
 
             // save key
             $rk = new sfGuardRememberKey();
-            $rk->setRememberKey( $key );
-            $rk->setUserId( $user );
-            $rk->setIpAddress( $_SERVER[ 'REMOTE_ADDR' ] );
+            $rk->set('remember_key', $key );
+            $rk->set('user', $user);
+            $rk->set('ip_address', $_SERVER[ 'REMOTE_ADDR' ] );
             $rk->save();
 
             // make key as a cookie
@@ -120,87 +120,5 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
         }
 
         return $this->user;
-    }
-
-    // add some proxy method to the sfGuardUser instance
-
-    public function __toString()
-    {
-        return $this->getGuardUser()->__toString();
-    }
-
-    public function getUsername()
-    {
-        return $this->getGuardUser()->getUsername();
-    }
-
-    public function getEmail()
-    {
-        return $this->getGuardUser()->getEmail();
-    }
-
-    public function setPassword( $password )
-    {
-        $this->getGuardUser()->setPassword( $password );
-    }
-
-    public function checkPassword( $password )
-    {
-        return $this->getGuardUser()->checkPassword( $password );
-    }
-
-    public function hasGroup( $name )
-    {
-        return $this->getGuardUser()->hasGroup( $name );
-    }
-
-    public function getGroups()
-    {
-        return $this->getGuardUser()->getUserGroups();
-    }
-
-    public function getGroupNames()
-    {
-        return $this->getGuardUser()->getGroupNames();
-    }
-
-    public function hasPermission( $name )
-    {
-        return $this->getGuardUser()->hasPermission( $name );
-    }
-
-    public function getPermissions()
-    {
-        return $this->getGuardUser()->getPermissions();
-    }
-
-    public function getPermissionNames()
-    {
-        return $this->getGuardUser()->getPermissionNames();
-    }
-
-    public function getAllPermissions()
-    {
-        return $this->getGuardUser()->getAllPermissions();
-    }
-
-    public function getAllPermissionNames()
-    {
-        return $this->getGuardUser()->getAllPermissionNames();
-    }
-
-    public function getProfile()
-    {
-        return $this->getGuardUser()->getProfile();
-    }
-
-    public function addGroupByName( $name )
-    {
-        return $this->getGuardUser()->addGroupByName( $name );
-    }
-
-    public function addPermissionByName( $name )
-    {
-        return $this->getGuardUser()->addPermissionByName( $name );
     }
 }
