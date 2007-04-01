@@ -1,8 +1,9 @@
 <?php
 /*
-
-*/
-class sfGuardGroup extends BasesfGuardGroup
+ * Plugin class
+ *
+ */
+class PluginsfGuardPermission extends BasesfGuardPermission
 {
     public function __toString()
     {

@@ -1,8 +1,9 @@
 <?php
 /*
-
-*/
-class sfGuardUserTable extends Doctrine_Table
+ * Plugin class
+ *
+ */
+class PluginsfGuardUserTable extends Doctrine_Table
 {
     public function retrieveByUsername( $username, $isActive = true )
     {

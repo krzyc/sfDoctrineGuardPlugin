@@ -1,8 +1,10 @@
 <?php
 /*
-
-*/
-class sfGuardPermissionTable extends Doctrine_Table
+/*
+ * Plugin class
+ *
+ */
+class PluginsfGuardPermissionTable extends Doctrine_Table
 {
     public function retrieveByName( $name )
     {

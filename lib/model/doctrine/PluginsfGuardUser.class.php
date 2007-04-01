@@ -1,8 +1,10 @@
 <?php
 /*
-
-*/
-class sfGuardUser extends BasesfGuardUser
+/*
+ * Plugin class
+ *
+ */
+class PluginsfGuardUser extends BasesfGuardUser
 {
     protected
         $allPermissions  = null;

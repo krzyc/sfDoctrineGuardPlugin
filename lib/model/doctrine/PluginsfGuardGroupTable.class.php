@@ -1,8 +1,9 @@
 <?php
 /*
-
-*/
-class sfGuardGroupTable extends Doctrine_Table
+ * Plugin class
+ *
+ */
+class PluginsfGuardGroupTable extends Doctrine_Table
 {
     public function retrieveByName( $name )
     {
