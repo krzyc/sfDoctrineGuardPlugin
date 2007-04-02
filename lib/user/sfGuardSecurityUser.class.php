@@ -44,6 +44,7 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
         // signin
         $this->setAttribute( 'user_id', $user->get('id'), 'sfGuardSecurityUser' );
         $this->setAuthenticated( true );
+        $this->clearCredentials();
         $this->addCredentials( $user->getAllPermissionNames() );
 
         // Get a new date formatter
