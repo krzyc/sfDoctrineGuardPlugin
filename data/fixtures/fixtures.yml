@@ -1,5 +1,6 @@
 sfGuardUser:
   adminUser:
+    email_address:  admin@domain.com
     username:       admin
     password:       admin
     is_super_admin: true
