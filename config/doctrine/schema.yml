@@ -1,6 +1,11 @@
 sfGuardUser:
   tableName: sf_guard_user
   columns:
+    id:
+      type: integer
+      size: 4
+      primary: true
+      autoincrement: true
     username:
       type: string
       size: 128
@@ -17,6 +22,10 @@ sfGuardUser:
     password:
       type: string
       size: 128
+      notnull: true
+    email_address:
+      type: string
+      size: 255
       notnull: true
     created_at:
       type: timestamp
@@ -38,35 +47,47 @@ sfGuardUser:
 sfGuardUserGroup:
   tableName: sf_guard_user_group
   columns:
+    id:
+      type: integer
+      size: 4
+      primary: true
+      autoincrement: true
     group_id:
       type: integer
-      size: 11
-#      primary: true
+      size: 4
       foreignClass: sfGuardGroup
+      foreignReference: id
       localName: users
       counterpart: user_id
+      foreignName: sfGuardGroup
     user_id:
       type: integer
-      size: 11
-#      primary: true
+      size: 4
       foreignClass: sfGuardUser
+      foreignReference: id
       localName: groups
       counterpart: group_id
+      foreignName: sfGuardUser
 
 sfGuardUserPermission:
   tableName: sf_guard_user_permission
   columns:
+    id:
+      type: integer
+      size: 4
+      primary: true
+      autoincrement: true
     user_id:
       type: integer
-      size: 11
-#      primary: true
+      size: 4
       foreignClass: sfGuardUser
+      foreignReference: id
       localName: permissions
       counterpart: permission_id
+      foreignName: sfGuardUser
     permission_id:
       type: integer
-      size: 11
-#      primary: true
+      size: 4
       foreignClass: sfGuardPermission
       localName: users
       counterpart: user_id
@@ -74,6 +95,11 @@ sfGuardUserPermission:
 sfGuardGroup:
   tableName: sf_guard_group
   columns:
+    id:
+      type: integer
+      size: 4
+      primary: true
+      autoincrement: true
     name:
       type: string
       size: 255
@@ -85,18 +111,21 @@ sfGuardGroup:
 sfGuardGroupPermission:
   tableName: sf_guard_group_permission
   columns:
+    id:
+      type: integer
+      size: 4
+      primary: true
+      autoincrement: true
     group_id:
       type: integer
-      size: 11
-#      primary: true
+      size: 4
       foreignClass: sfGuardGroup
       localName: permissions
       counterpart: permission_id
     permission_id:
       type: integer
-      size: 11
+      size: 4
       notnull: true
-#      primary: true
       foreignClass: sfGuardPermission
       localName: groups
       counterpart: group_id
@@ -104,6 +133,11 @@ sfGuardGroupPermission:
 sfGuardPermission:
   tableName: sf_guard_permission
   columns:
+    id:
+      type: integer
+      size: 4
+      primary: true
+      autoincrement: true
     name:
       type: string
       size: 255
@@ -115,9 +149,14 @@ sfGuardPermission:
 sfGuardRememberKey:
   tableName: sf_guard_remember_key
   columns:
+    id:
+      type: integer
+      size: 4
+      primary: true
+      autoincrement: true
     user_id:
       type: integer
-      size: 11
+      size: 4
       primary: true
       foreignClass: sfGuardUser
       foreignName: user
