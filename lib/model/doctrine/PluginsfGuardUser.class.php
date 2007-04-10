@@ -7,7 +7,8 @@
 class PluginsfGuardUser extends BasesfGuardUser
 {
     protected
-        $allPermissions  = null;
+        $allPermissions  = null,
+				$groupNames      = null;
 
     public function __toString()
     {
@@ -87,8 +88,15 @@ class PluginsfGuardUser extends BasesfGuardUser
 
     public function getGroupNames()
     {
-        # FIXME: won't work since collections are not arrays?
-        return array_keys( $this->get('groups') );
+			if( !$this->groupNames )
+			{
+			 	foreach($this->get('groups') AS $group)
+				{
+					$this->groupNames[$group->getName()] = $group->getName();
+				}
+			}
+      
+			return $this->groupNames;
     }
 
     public function hasPermission( $name )
@@ -109,13 +117,15 @@ class PluginsfGuardUser extends BasesfGuardUser
             {
                 foreach ( $group->get('permissions') as $permission )
                 {
-                    $this->allPermissions[ $permission->getName() ] = $permission;
+                    $this->allPermissions[ $permission->getName() ] = $permission->getName();
                 }
                 
             }
-
-            # FIXME: check that array_merge works with collections...
-            $this->allPermissions = array_merge_recursive( $this->allPermissions, $this->get('permissions') );
+						
+						foreach( $this->get('permissions') as $permission )
+						{
+								$this->allPermissions[ $permission->getName() ] = $permission->getName();
+						}
         }
 
         return $this->allPermissions;
@@ -130,7 +140,6 @@ class PluginsfGuardUser extends BasesfGuardUser
 
     public function getAllPermissionNames()
     {
-        # FIXME: won't work
         return array_keys( $this->getAllPermissions() );
     }
 
