@@ -34,6 +34,11 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
         return parent::hasCredential( $credential, $useAnd );
     }
 
+		public function getUsername()
+		{
+			return $this->getAttribute('username');
+		}
+
     public function isAnonymous()
     {
         return $this->getAttribute( 'user_id', null, 'sfGuardSecurityUser' ) ? false : true;
@@ -43,7 +48,8 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
     {
         // signin
         $this->setAttribute( 'user_id', $user->get('id'), 'sfGuardSecurityUser' );
-        $this->setAuthenticated( true );
+        $this->setAttribute( 'username', $user->get('username') );
+				$this->setAuthenticated( true );
         $this->clearCredentials();
         $this->addCredentials( $user->getAllPermissionNames() );
 
