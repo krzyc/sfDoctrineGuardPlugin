@@ -7,6 +7,9 @@ class PluginsfGuardGroupTable extends Doctrine_Table
 {
     public function retrieveByName( $name )
     {
-        return $this->createQuery()->where( 'sfGuardGroup.name = ?', $name )->execute()-getFirst();
-    }
+				$query = new Doctrine_Query();
+				$query->from('sfGuardGroup g')->where('sfGuardGroup.name = ?', $name)->limit(1);
+				
+				return $query->execute()->getFirst();
+		}
 }
