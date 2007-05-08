@@ -1,5 +1,6 @@
+<?php include('schemaConfig.php') ?>
 sfGuardUser:
-  tableName: sf_guard_user
+  tableName: <?php echo $config['user_table']."\n"; ?>
   columns:
     id:
       type: integer
@@ -45,7 +46,7 @@ sfGuardUser:
       notnull: true
 
 sfGuardUserGroup:
-  tableName: sf_guard_user_group
+  tableName: <?php echo $config['user_group_table']."\n"; ?>
   columns:
     id:
       type: integer
@@ -70,7 +71,7 @@ sfGuardUserGroup:
       foreignName: sfGuardUser
 
 sfGuardUserPermission:
-  tableName: sf_guard_user_permission
+  tableName: <?php echo $config['user_permission_table']."\n"; ?>
   columns:
     id:
       type: integer
@@ -93,7 +94,7 @@ sfGuardUserPermission:
       counterpart: user_id
 
 sfGuardGroup:
-  tableName: sf_guard_group
+  tableName: <?php echo $config['group_table']."\n"; ?>
   columns:
     id:
       type: integer
@@ -109,7 +110,7 @@ sfGuardGroup:
       size: 4000
 
 sfGuardGroupPermission:
-  tableName: sf_guard_group_permission
+  tableName: <?php echo $config['group_permission_table']."\n"; ?>
   columns:
     id:
       type: integer
@@ -131,7 +132,7 @@ sfGuardGroupPermission:
       counterpart: group_id
 
 sfGuardPermission:
-  tableName: sf_guard_permission
+  tableName: <?php echo $config['permission_table']."\n"; ?>
   columns:
     id:
       type: integer
@@ -147,7 +148,7 @@ sfGuardPermission:
       size: 4000
 
 sfGuardRememberKey:
-  tableName: sf_guard_remember_key
+  tableName: <?php echo $config['remember_key_table']."\n"; ?>
   columns:
     id:
       type: integer
