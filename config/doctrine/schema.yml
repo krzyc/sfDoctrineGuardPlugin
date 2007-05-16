@@ -24,10 +24,6 @@ sfGuardUser:
       type: string
       size: 128
       notnull: true
-    email_address:
-      type: string
-      size: 255
-      notnull: true
     created_at:
       type: timestamp
       size: null
