@@ -19,7 +19,7 @@ class sfGuardBasicSecurityFilter extends sfBasicSecurityFilter
 {
     public function execute( $filterChain )
     {
-        if ( $this->isFirstCall() )
+        if ( $this->isFirstCall() AND !$this->getContext()->getUser()->isAuthenticated() )
         {
             if ( $cookie = $this->getContext()->getRequest()->getCookie( sfConfig::get( 'app_sf_guard_plugin_remember_cookie_name', 'sfRemember' ) ) )
             {
