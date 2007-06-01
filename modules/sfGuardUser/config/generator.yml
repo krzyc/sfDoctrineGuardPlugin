@@ -20,6 +20,6 @@ generator:
         last_login:               { name: 'Last Login', type: plain }
         is_active:                { name: 'Active?' }
       display:
-        "NONE":                   [ username, email_address, _password, _password_bis ]
+        "NONE":                   [ username, _password, _password_bis ]
         "Information":            [ last_login ]
         "Permissions and Groups": [ is_active, groups, permissions ]
