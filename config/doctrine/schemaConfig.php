@@ -2,8 +2,8 @@
 $config = array('group_table'             =>  'sf_guard_group',
                 'group_permission_table'  =>  'sf_guard_group_permission',
                 'permission_table'        =>  'sf_guard_permission',
-                'remember_key_table'      =>  'sf_guard_permission',
-                'user_table'         =>  'sf_guard_user',
+                'remember_key_table'      =>  'sf_guard_remember_key',
+                'user_table'         	    =>  'sf_guard_user',
                 'user_group_table'        =>  'sf_guard_user_group',
                 'user_permission_table'   =>  'sf_guard_user_permission'
                 );
