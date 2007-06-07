@@ -15,7 +15,7 @@ class PluginsfGuardUser extends BasesfGuardUser
         return $this->get('username');
     }
 
-    public function filterSetPassword( $password )
+    public function setPassword( $password )
     {
         # FIXME: why is this necessary?
         if ( !$password )
@@ -33,7 +33,7 @@ class PluginsfGuardUser extends BasesfGuardUser
         }
         $this->set('algorithm', $algorithmAsStr );
 
-        return call_user_func_array( $algorithm, array( $salt . $password ) );
+        parent::set('password', call_user_func_array( $algorithm, array( $salt . $password ) ));
     }
 
     public function checkPassword( $password )
@@ -65,7 +65,7 @@ class PluginsfGuardUser extends BasesfGuardUser
         {
             throw new Exception( sprintf( 'The group "%s" does not exist.', $name ) );
         }
-        
+
         $this->get('groups')->add($group);
     }
 
@@ -95,7 +95,7 @@ class PluginsfGuardUser extends BasesfGuardUser
 					$this->groupNames[$group->getName()] = $group->getName();
 				}
 			}
-      
+
 			return $this->groupNames;
     }
 
@@ -119,9 +119,9 @@ class PluginsfGuardUser extends BasesfGuardUser
                 {
                     $this->allPermissions[ $permission->getName() ] = $permission->getName();
                 }
-                
+
             }
-						
+
 						foreach( $this->get('permissions') as $permission )
 						{
 								$this->allPermissions[ $permission->getName() ] = $permission->getName();
@@ -154,6 +154,11 @@ class PluginsfGuardUser extends BasesfGuardUser
       if ($name == 'password_bis')
         return;
 
-      parent::set($name, $value, $load);
+      $method = 'set'.sfInflector::camelize($name);
+  		if(method_exists($this,$method)) {
+  			return $this->$method($value);
+  		}
+
+  		return parent::set($name, $value, $load);
     }
 }
