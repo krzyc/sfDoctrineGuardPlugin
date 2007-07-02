@@ -1,7 +1,8 @@
 sfGuardUser:
   adminUser:
     username:       admin
-    password:       admin
+    salt:           a33ebe61d6407636ca16ab51798dbc8e
+    password:       ad76e5e335dcf1f82f1d44bd0fe18ca88826e4f3
     is_super_admin: true
 
 sfGuardPermission:
