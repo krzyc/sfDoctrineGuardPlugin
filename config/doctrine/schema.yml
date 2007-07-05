@@ -2,11 +2,10 @@
 sfGuardUser:
   tableName: <?php echo $config['user_table']."\n"; ?>
   columns:
-    id:
-      type: integer
-      size: 4
-      primary: true
-      autoincrement: true
+    created_at: 
+      type: timestamp
+    updated_at: 
+      type: timestamp  
     username:
       type: string
       size: 128
@@ -33,22 +32,21 @@ sfGuardUser:
     is_active:
       type: boolean
       size: null
-      default: true
+      default: 1
       notnull: true
     is_super_admin:
       type: boolean
       size: null
-      default: false
+      default: 0
       notnull: true
 
 sfGuardUserGroup:
   tableName: <?php echo $config['user_group_table']."\n"; ?>
   columns:
-    id:
-      type: integer
-      size: 4
-      primary: true
-      autoincrement: true
+    created_at: 
+      type: timestamp
+    updated_at: 
+      type: timestamp    
     group_id:
       type: integer
       size: 4
@@ -57,6 +55,7 @@ sfGuardUserGroup:
       localName: users
       counterpart: user_id
       foreignName: sfGuardGroup
+      primary: true
     user_id:
       type: integer
       size: 4
@@ -65,15 +64,15 @@ sfGuardUserGroup:
       localName: groups
       counterpart: group_id
       foreignName: sfGuardUser
+      primary: true
 
 sfGuardUserPermission:
   tableName: <?php echo $config['user_permission_table']."\n"; ?>
   columns:
-    id:
-      type: integer
-      size: 4
-      primary: true
-      autoincrement: true
+    created_at: 
+      type: timestamp
+    updated_at: 
+      type: timestamp
     user_id:
       type: integer
       size: 4
@@ -82,21 +81,22 @@ sfGuardUserPermission:
       localName: permissions
       counterpart: permission_id
       foreignName: sfGuardUser
+      primary: true
     permission_id:
       type: integer
       size: 4
       foreignClass: sfGuardPermission
       localName: users
       counterpart: user_id
+      primary: true
 
 sfGuardGroup:
   tableName: <?php echo $config['group_table']."\n"; ?>
   columns:
-    id:
-      type: integer
-      size: 4
-      primary: true
-      autoincrement: true
+    created_at: 
+      type: timestamp
+    updated_at: 
+      type: timestamp
     name:
       type: string
       size: 255
@@ -108,17 +108,17 @@ sfGuardGroup:
 sfGuardGroupPermission:
   tableName: <?php echo $config['group_permission_table']."\n"; ?>
   columns:
-    id:
-      type: integer
-      size: 4
-      primary: true
-      autoincrement: true
+    created_at: 
+      type: timestamp
+    updated_at: 
+      type: timestamp
     group_id:
       type: integer
       size: 4
       foreignClass: sfGuardGroup
       localName: permissions
       counterpart: permission_id
+      primary: true
     permission_id:
       type: integer
       size: 4
@@ -126,15 +126,15 @@ sfGuardGroupPermission:
       foreignClass: sfGuardPermission
       localName: groups
       counterpart: group_id
+      primary: true
 
 sfGuardPermission:
   tableName: <?php echo $config['permission_table']."\n"; ?>
   columns:
-    id:
-      type: integer
-      size: 4
-      primary: true
-      autoincrement: true
+    created_at: 
+      type: timestamp
+    updated_at: 
+      type: timestamp    
     name:
       type: string
       size: 255
@@ -146,11 +146,10 @@ sfGuardPermission:
 sfGuardRememberKey:
   tableName: <?php echo $config['remember_key_table']."\n"; ?>
   columns:
-    id:
-      type: integer
-      size: 4
-      primary: true
-      autoincrement: true
+    created_at: 
+      type: timestamp
+    updated_at: 
+      type: timestamp
     user_id:
       type: integer
       size: 4
