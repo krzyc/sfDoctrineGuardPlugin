@@ -23,9 +23,6 @@ sfGuardUser:
       type: string
       size: 128
       notnull: true
-    created_at:
-      type: timestamp
-      size: null
     last_login:
       type: timestamp
       size: null
@@ -165,6 +162,3 @@ sfGuardRememberKey:
       type: string
       size: 15
       primary: true
-    created_at:
-      type: timestamp
-      size: null
