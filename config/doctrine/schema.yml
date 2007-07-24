@@ -2,6 +2,11 @@
 sfGuardUser:
   tableName: <?php echo $config['user_table']."\n"; ?>
   columns:
+    id:
+      type: integer
+      size: 4
+      primary: true
+      autoincrement: true
     created_at: 
       type: timestamp
     updated_at: 
@@ -90,6 +95,11 @@ sfGuardUserPermission:
 sfGuardGroup:
   tableName: <?php echo $config['group_table']."\n"; ?>
   columns:
+    id:
+      type: integer
+      size: 4
+      primary: true
+      autoincrement: true
     created_at: 
       type: timestamp
     updated_at: 
@@ -128,6 +138,11 @@ sfGuardGroupPermission:
 sfGuardPermission:
   tableName: <?php echo $config['permission_table']."\n"; ?>
   columns:
+    id:
+      type: integer
+      size: 4
+      primary: true
+      autoincrement: true
     created_at: 
       type: timestamp
     updated_at: 
@@ -143,6 +158,11 @@ sfGuardPermission:
 sfGuardRememberKey:
   tableName: <?php echo $config['remember_key_table']."\n"; ?>
   columns:
+    id:
+      type: integer
+      size: 4
+      primary: true
+      autoincrement: true
     created_at: 
       type: timestamp
     updated_at: 
