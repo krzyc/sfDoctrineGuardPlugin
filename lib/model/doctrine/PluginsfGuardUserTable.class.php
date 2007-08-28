@@ -14,9 +14,6 @@ class PluginsfGuardUserTable extends Doctrine_Table
 
 		static function retrieveByUsernameOrEmailAddress($usernameOrEmail)
 		{
-			$query = new Doctrine_Query();
-			$query->from('sfGuardUser u')->where('u.username = ? OR u.email_address = ?', array($usernameOrEmail, $usernameOrEmail));
-
-			return $query->limit(1)->execute()->getFirst();
+		  throw new Exception('Override this function in your sfGuardUserTable class so it queries for the user based on the username or email address');
 		}
 }

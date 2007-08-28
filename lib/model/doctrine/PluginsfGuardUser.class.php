@@ -163,4 +163,19 @@ class PluginsfGuardUser extends BasesfGuardUser
       
   		return parent::set($name, $value, $load);
     }
+    
+    public function getEmailAddress()
+    {
+      throw new Exception('Override this function in your sfGuardUser model so it returns the e-mail address for the user');
+    }
+    
+    public function confirm()
+    {
+      
+    }
+    
+    public function register($userInfo)
+    {
+      
+    }
 }
