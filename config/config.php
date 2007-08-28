@@ -16,5 +16,5 @@ if (sfConfig::get('app_sfGuardPlugin_routes_register', true) && in_array('sfGuar
   $r->prependRoute('sf_guard_do_register', '/register/do', array('module' => 'sfGuardRegister', 'action' => 'register'));
   $r->prependRoute('sf_guard_register_confirm', '/register/confirm/:key/:id', array('module' => 'sfGuardRegister', 'action' => 'register_confirm'));
   $r->prependRoute('sf_guard_register_success', '/register/success', array('module' => 'sfGuardRegister', 'action' => 'register_success'));
-  $r->prependRoute('sf_guard_register_complete', '/register/complete', array('module' => 'sfGuardRegister', 'action' => 'register_complete'));
+  $r->prependRoute('sf_guard_register_complete', '/register/complete/:id', array('module' => 'sfGuardRegister', 'action' => 'register_complete'));
 }

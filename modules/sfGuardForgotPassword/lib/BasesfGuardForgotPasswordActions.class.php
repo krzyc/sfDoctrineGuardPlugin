@@ -23,7 +23,6 @@ class BasesfGuardForgotPasswordActions extends sfActions
    * @return void
    * @author Jonathan H. Wage
    */
-  
 	public function executePassword()
 	{
 	}

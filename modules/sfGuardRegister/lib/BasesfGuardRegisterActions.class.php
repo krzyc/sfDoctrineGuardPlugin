@@ -27,6 +27,7 @@ class BasesfGuardRegisterActions extends sfActions
     $this->sfGuardUser = new sfGuardUser();
     $this->sfGuardUser->merge($userInfo);
     $this->sfGuardUser->setEmailAddress($userInfo['email_address']);
+    $this->sfGuardUser->setActive(0);
     $this->sfGuardUser->register($userInfo);
     $this->sfGuardUser->save();
     
@@ -50,6 +51,7 @@ class BasesfGuardRegisterActions extends sfActions
 		$query->from('sfGuardUser u')->where('u.password = ? AND u.id = ?', $params)->limit(1);
 		
 		$this->sfGuardUser = $query->execute()->getFirst();
+		$this->sfGuardUser->setActive(1);
 		$this->sfGuardUser->confirm();
 		$this->sfGuardUser->save();
 		
@@ -59,7 +61,7 @@ class BasesfGuardRegisterActions extends sfActions
 		$this->logMessage($rawEmail, 'debug');
     
     $this->setFlash('notice', 'You have successfully confirmed your registration!');
-    $this->redirect('@sf_guard_register_complete');
+    $this->redirect('@sf_guard_register_complete?id='.$this->sfGuardUser->getId());
   }
   
   public function executeRegister_complete()
