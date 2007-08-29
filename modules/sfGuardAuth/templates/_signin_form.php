@@ -21,5 +21,9 @@
   </fieldset>
 
   <?php echo submit_tag(__('sign in')) ?>
-  <?php echo link_to(__('Forgot your password?'), '@sf_guard_password', array('id' => 'sf_guard_auth_forgot_password')) ?>
+  
+  <?php if( sfGuardUser::hasEmailAddress() ): ?>
+    <?php echo link_to(__('Forgot your password?'), '@sf_guard_password', array('id' => 'sf_guard_auth_forgot_password')) ?> or 
+    <?php echo link_to(__('Need an account?'), '@sf_guard_register'); ?>
+  <?php endif; ?>
 </form>

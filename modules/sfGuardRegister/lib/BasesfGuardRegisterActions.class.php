@@ -1,6 +1,14 @@
 <?php
 class BasesfGuardRegisterActions extends sfActions
 {
+  public function preExecute()
+  {
+    if( $this->getUser()->isAuthenticated() )
+    {
+      $this->redirect('@homepage');
+    }
+  }
+  
   public function executeIndex()
   {
     
@@ -27,7 +35,7 @@ class BasesfGuardRegisterActions extends sfActions
     $this->sfGuardUser = new sfGuardUser();
     $this->sfGuardUser->merge($userInfo);
     $this->sfGuardUser->setEmailAddress($userInfo['email_address']);
-    $this->sfGuardUser->setActive(0);
+    $this->sfGuardUser->setIsActive(0);
     $this->sfGuardUser->register($userInfo);
     $this->sfGuardUser->save();
     
@@ -51,7 +59,7 @@ class BasesfGuardRegisterActions extends sfActions
 		$query->from('sfGuardUser u')->where('u.password = ? AND u.id = ?', $params)->limit(1);
 		
 		$this->sfGuardUser = $query->execute()->getFirst();
-		$this->sfGuardUser->setActive(1);
+		$this->sfGuardUser->setIsActive(1);
 		$this->sfGuardUser->confirm();
 		$this->sfGuardUser->save();
 		
