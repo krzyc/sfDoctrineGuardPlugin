@@ -15,7 +15,7 @@ class PluginsfGuardUser extends BasesfGuardUser
       return $this->get('username');
     }
 
-    public function setPassword( $password )
+    public function filterSetPassword( $password )
     {
       # FIXME: why is this necessary?
       if ( !$password )
