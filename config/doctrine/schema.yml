@@ -122,6 +122,7 @@ sfGuardGroupPermission:
     group_id:
       type: integer
       size: 4
+      notnull: true
       foreignClass: sfGuardGroup
       localName: permissions
       counterpart: permission_id
